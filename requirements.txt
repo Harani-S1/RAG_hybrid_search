@@ -6,3 +6,6 @@ sentence-transformers
 langchain-huggingface
 chromadb
 bm25
+groq
+python-dotenv
+pymupdf
