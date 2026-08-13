@@ -12,3 +12,4 @@ data/chroma/
 # Virtual environment
 .venv/
 venv/
+.vscode/
