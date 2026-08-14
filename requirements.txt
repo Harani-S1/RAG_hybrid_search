@@ -9,3 +9,5 @@ bm25
 groq
 python-dotenv
 pymupdf
+fastapi 
+uvicorn
