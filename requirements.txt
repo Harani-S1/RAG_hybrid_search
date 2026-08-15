@@ -11,3 +11,4 @@ python-dotenv
 pymupdf
 fastapi 
 uvicorn
+rank-bm25
