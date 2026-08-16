@@ -1,0 +1,1743 @@
+{
+    "evaluation_type": "automated",
+    "metrics": [
+        "answer_correctness",
+        "faithfulness",
+        "retrieval_relevance",
+        "citation_accuracy"
+    ],
+    "summary": {
+        "total_questions": 67,
+        "correct": 14,
+        "incorrect": 53,
+        "overall_accuracy": 0.209,
+        "average_answer_correctness": 0.4051,
+        "average_faithfulness": 0.8223,
+        "average_retrieval_relevance": 0.4,
+        "average_citation_accuracy": 0.7612,
+        "average_overall_score": 0.6493,
+        "retrieval_ground_truth_questions": 10,
+        "retrieval_ground_truth_missing": 57
+    },
+    "results": [
+        {
+            "question": "What is machine learning?",
+            "type": "lookup",
+            "expected_answer": "Machine learning is a technique that allows computer systems to improve with experience and data.",
+            "generated_answer": "A machine learning algorithm is an algorithm that is able to learn from data. But what do we mean by learning? Mitchell 1997 () provides the definition “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 114 (Human page: 115)",
+            "answer_correctness": 0.3607,
+            "faithfulness": 0.9783,
+            "retrieval_relevance": 1.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.8347,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "114 (Human page: 115)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0114_000_000975"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0113_000_000972",
+                "chunk_0114_000_000975",
+                "chunk_0115_000_000978",
+                "chunk_0114_002_000977",
+                "chunk_0311_000_000653"
+            ]
+        },
+        {
+            "question": "What is deep learning?",
+            "type": "lookup",
+            "expected_answer": "Deep learning is a type of machine learning based on models that involve greater composition of learned functions or concepts than traditional machine learning.",
+            "generated_answer": "Deep learning is an approach to machine learning that has drawn heavily on our knowledge of the human brain, statistics, and applied math as it developed over the past several decades. It has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets, and techniques to train deeper networks.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 41 (Human page: 42)",
+            "answer_correctness": 0.2059,
+            "faithfulness": 1.0,
+            "retrieval_relevance": 1.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.8015,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "41 (Human page: 42)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0028_001_000748"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0041_000_000791",
+                "chunk_0020_002_000729",
+                "chunk_0028_001_000748",
+                "chunk_0028_003_000750",
+                "chunk_0182_000_001181"
+            ]
+        },
+        {
+            "question": "What is representation learning?",
+            "type": "lookup",
+            "expected_answer": "Representation learning is an approach in which a machine learning system learns useful representations or features from data.",
+            "generated_answer": "Representation learning is the process of learning a representation of the input data that makes a subsequent learning task easier. A good representation is one that captures the essential properties of the input data and makes it easier to perform a specific task, such as classification or prediction. This can be achieved through various methods, including supervised learning, unsupervised learning, and multi-task learning.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 542 (Human page: 543)",
+            "answer_correctness": 0.2105,
+            "faithfulness": 0.725,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.4839,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "542 (Human page: 543)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0023_001_000738"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0542_000_002299",
+                "chunk_0553_000_002338",
+                "chunk_0556_000_002348",
+                "chunk_0572_000_002401",
+                "chunk_0542_002_002301"
+            ]
+        },
+        {
+            "question": "What is a neural network?",
+            "type": "lookup",
+            "expected_answer": "A neural network is a machine learning model composed of interconnected computational units that can learn representations from data.",
+            "generated_answer": "A neural network is loosely inspired by neuroscience and is called neural because of this inspiration. Each hidden layer of the network is typically vector-valued, and each element of the vector may be interpreted as playing a role analogous to a neuron. \n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 184",
+            "answer_correctness": 0.2041,
+            "faithfulness": 0.9677,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.543,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "184"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0028_000_000747"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0345_000_001692",
+                "chunk_0388_000_001820",
+                "chunk_0183_001_001185",
+                "chunk_0308_002_001571",
+                "chunk_0184_001_001187"
+            ]
+        },
+        {
+            "question": "What is supervised learning?",
+            "type": "lookup",
+            "expected_answer": "Supervised learning is a type of machine learning in which the system learns from examples that include target information or labels.",
+            "generated_answer": "Supervised learning involves observing several examples of a random vector x and an associated value or vector y, and learning to predict y from x, usually by estimating p(y|x).\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 121 (Human page: 122)",
+            "answer_correctness": 0.3182,
+            "faithfulness": 1.0,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.5795,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "121 (Human page: 122)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0120_000_000997"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0120_002_000999",
+                "chunk_0120_001_000998",
+                "chunk_0161_002_001123",
+                "chunk_0121_000_001000",
+                "chunk_0155_000_001103"
+            ]
+        },
+        {
+            "question": "What is reinforcement learning?",
+            "type": "lookup",
+            "expected_answer": "Reinforcement learning is a type of learning in which an algorithm interacts with an environment and receives feedback from its experiences.",
+            "generated_answer": "Reinforcement learning involves interaction between the learner and the environment. The learner must learn to perform a task by trial and error, without any guidance from the human operator. This is demonstrated by DeepMind's reinforcement learning system based on deep learning, which is capable of learning to play Atari video games and reaching human-level performance on many tasks.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 40 (Human page: 41)",
+            "answer_correctness": 0.2812,
+            "faithfulness": 1.0,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.5703,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "40 (Human page: 41)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0121_001_001001"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0497_001_002168",
+                "chunk_0040_002_000789",
+                "chunk_0496_001_002164",
+                "chunk_0496_002_002165",
+                "chunk_0040_001_000788"
+            ]
+        },
+        {
+            "question": "What are the main advantages of deep learning?",
+            "type": "lookup",
+            "expected_answer": "Deep learning benefits from more powerful computers, larger datasets, and techniques that allow deeper networks to be trained. Deep models can also provide advantages through distributed representations.",
+            "generated_answer": "The main advantages of deep learning include exponential gains in the relationship between the number of examples and the number of regions that can be distinguished, and the exponential advantages conferred by the use of deep, distributed representations counter the exponential challenges posed by the curse of dimensionality. Additionally, deep learning has been successfully used in commercial applications since the 1990s, and the amount of skill required to get good performance from a deep learning algorithm reduces as the amount of training data increases.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 175 (Human page: 176) and Page: 34 (Human page: 35)",
+            "answer_correctness": 0.275,
+            "faithfulness": 0.963,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.5595,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "175 (Human page: 176) and Page: 34 (Human page: 35)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0041_001_000792"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0175_003_001168",
+                "chunk_0034_002_000771",
+                "chunk_0458_000_002032",
+                "chunk_0170_001_001151",
+                "chunk_0688_000_002744"
+            ]
+        },
+        {
+            "question": "How does deep learning differ from traditional machine learning?",
+            "type": "lookup",
+            "expected_answer": "Deep learning involves a greater amount of composition of learned functions or learned concepts than traditional machine learning.",
+            "generated_answer": "Deep learning differs from traditional machine learning in that it involves a greater amount of composition of learned functions or learned concepts. Deep learning models are also designed to overcome the obstacles of high-dimensional data and computational costs, which traditional machine learning algorithms often struggle with.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 23 (Human page: 24)",
+            "answer_correctness": 0.5283,
+            "faithfulness": 0.9211,
+            "retrieval_relevance": 0.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6123,
+            "evaluation": "correct",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "23 (Human page: 24)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0034_002_000771"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0023_001_000738",
+                "chunk_0113_000_000972",
+                "chunk_0170_001_001151",
+                "chunk_0028_003_000750",
+                "chunk_0028_002_000749"
+            ]
+        },
+        {
+            "question": "What is a machine learning algorithm?",
+            "type": "lookup",
+            "expected_answer": "A machine learning algorithm is an algorithm that is able to learn from data.",
+            "generated_answer": "A machine learning algorithm is an algorithm that is able to learn from data. According to Mitchell 1997, a computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 114 (Human page: 115)",
+            "answer_correctness": 0.4706,
+            "faithfulness": 0.9744,
+            "retrieval_relevance": 1.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.8612,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "114 (Human page: 115)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0114_000_000975"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0114_000_000975",
+                "chunk_0018_000_000720",
+                "chunk_0023_002_000043",
+                "chunk_0131_003_001036",
+                "chunk_0115_000_000978"
+            ]
+        },
+        {
+            "question": "Why has deep learning become more useful over time?",
+            "type": "lookup",
+            "expected_answer": "Deep learning has become more useful because available training data has increased and computer infrastructure has improved. Models have grown in size and have solved increasingly complicated applications with increasing accuracy.",
+            "generated_answer": "Deep learning has become more useful as the amount of available training data has increased.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 26 (Human page: 27)",
+            "answer_correctness": 0.4878,
+            "faithfulness": 1.0,
+            "retrieval_relevance": 1.0,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.872,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "26 (Human page: 27)"
+                }
+            ],
+            "relevant_chunk_ids": [
+                "chunk_0041_001_000792",
+                "chunk_0026_002_000745"
+            ],
+            "retrieved_chunk_ids": [
+                "chunk_0026_002_000745",
+                "chunk_0034_002_000771",
+                "chunk_0041_001_000792",
+                "chunk_0026_001_000744",
+                "chunk_0034_001_000770"
+            ]
+        },
+        {
+            "question": "What is overfitting?",
+            "type": "lookup",
+            "expected_answer": "Overfitting occurs when a model fits the training data too closely and does not generalize well to new examples.",
+            "generated_answer": "Overfitting is when a model tries so hard to model the given data correctly that it is clearly useless to extrapolate beyond. This is because the model has become too complex and has started to fit the noise in the data rather than the underlying patterns.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 44 (Human page: 45)\n\nOverfitting is also described as a situation where the gap between the training error and test error is too large.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 126 (Human page: 127)\n\nAdditionally, overfitting occurs when the model is not able to obtain a sufficiently low error value on the training set.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 126 (Human page: 127)",
+            "answer_correctness": 0.3243,
+            "faithfulness": 0.7636,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.696,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "44 (Human page: 45)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "126 (Human page: 127)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0042_001_000080",
+                "chunk_0044_000_000083",
+                "chunk_0126_003_001019",
+                "chunk_0182_001_000383",
+                "chunk_0045_000_000084"
+            ]
+        },
+        {
+            "question": "What is underfitting?",
+            "type": "lookup",
+            "expected_answer": "Underfitting occurs when a model is not sufficiently capable of fitting the underlying patterns in the data.",
+            "generated_answer": "Underfitting occurs when the model is not able to obtain a sufficiently low error value on the training set. It also occurs when the gap between the training error and test error is too small. A model's capacity is its ability to fit a wide variety of data, and underfitting can be controlled by altering its capacity.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 126 (Human page: 127)\n\nAdditionally, underfitting is also described as when a model seems not to be capable of capturing the data good enough. This is in contrast to overfitting, where the model tries too hard to model the given data correctly.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 44 (Human page: 45)",
+            "answer_correctness": 0.3562,
+            "faithfulness": 0.8772,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7445,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "126 (Human page: 127)"
+                },
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "44 (Human page: 45)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0126_003_001019",
+                "chunk_0044_000_000083",
+                "chunk_0042_001_000080",
+                "chunk_0190_001_000403",
+                "chunk_0182_000_000382"
+            ]
+        },
+        {
+            "question": "What are hyperparameters?",
+            "type": "lookup",
+            "expected_answer": "Hyperparameters are settings used to control the behavior of a machine learning algorithm.",
+            "generated_answer": "Hyperparameters are settings that we can use to control the behavior of the learning algorithm. They are not adapted by the learning algorithm itself, though we can design a nested learning procedure where one learning algorithm learns the best hyperparameters for another learning algorithm.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 135 (Human page: 136)",
+            "answer_correctness": 0.5116,
+            "faithfulness": 0.9667,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.8261,
+            "evaluation": "correct",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "135 (Human page: 136)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0135_002_001049",
+                "chunk_0444_000_001986",
+                "chunk_0442_003_001982",
+                "chunk_0444_001_001987",
+                "chunk_0450_002_002007"
+            ]
+        },
+        {
+            "question": "What is a validation set used for?",
+            "type": "lookup",
+            "expected_answer": "A validation set is used to help select hyperparameters and evaluate model choices during development.",
+            "generated_answer": "A validation set is used to guide the selection of hyperparameters and to estimate the generalization error during or after training, allowing for the hyperparameters to be updated accordingly. It is also used to \"train\" the hyperparameters.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 136 (Human page: 137)",
+            "answer_correctness": 0.4286,
+            "faithfulness": 0.963,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7972,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "136 (Human page: 137)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0136_002_001052",
+                "chunk_0136_001_001051",
+                "chunk_0450_003_002008",
+                "chunk_0135_002_001049",
+                "chunk_0261_002_001427"
+            ]
+        },
+        {
+            "question": "What is stochastic gradient descent?",
+            "type": "lookup",
+            "expected_answer": "Stochastic gradient descent is an optimization approach that updates model parameters using gradients estimated from training examples or minibatches.",
+            "generated_answer": "Stochastic gradient descent (SGD) is an optimization algorithm that follows the gradient of randomly selected minibatches downhill. It is possible to obtain an unbiased estimate of the gradient by taking the average gradient on a minibatch of m examples drawn i.i.d from the data generating distribution.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 309 (Human page: 310)",
+            "answer_correctness": 0.3571,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7857,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "309 (Human page: 310)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0295_003_001529",
+                "chunk_0168_000_001143",
+                "chunk_0309_000_001573",
+                "chunk_0311_001_001581",
+                "chunk_0167_002_001142"
+            ]
+        },
+        {
+            "question": "What is classification?",
+            "type": "lookup",
+            "expected_answer": "Classification is a machine learning task in which a program assigns an input to one of a set of categories.",
+            "generated_answer": "Classification is a method used in machine learning, as described in Context 3. According to the text, \"Contrary to its name, logistic regression is a classification method.\" It is also mentioned that \"logistic regression is a very powerful one when it comes to text-based classification.\"\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 132 (Human page: 133)",
+            "answer_correctness": 0.3333,
+            "faithfulness": 0.8387,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.724,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "132 (Human page: 133)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0224_000_000480",
+                "chunk_0236_000_000502",
+                "chunk_0132_000_000286",
+                "chunk_0234_000_000497",
+                "chunk_0071_000_000144"
+            ]
+        },
+        {
+            "question": "What is regression?",
+            "type": "lookup",
+            "expected_answer": "Regression is a supervised learning task in which the model learns to predict a continuous-valued output.",
+            "generated_answer": "Regression is a type of task in machine learning where the computer program is asked to predict a numerical value given some input. To solve this task, the learning algorithm is asked to output a function f: Rn →R. This type of task is similar to classification, except that the format of output is different. An example of a regression task is the prediction of the expected claim amount that an insured person will make (used to set insurance premiums), or the prediction of future prices of securities.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 116 (Human page: 117)",
+            "answer_correctness": 0.2899,
+            "faithfulness": 0.9623,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7507,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "116 (Human page: 117)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0116_000_000982",
+                "chunk_0177_000_000371",
+                "chunk_0125_001_001014",
+                "chunk_0155_002_001105",
+                "chunk_0122_002_001006"
+            ]
+        },
+        {
+            "question": "What is unsupervised learning?",
+            "type": "lookup",
+            "expected_answer": "Unsupervised learning refers to learning from data without a supervision signal or target provided for each example.",
+            "generated_answer": "Unsupervised learning refers to most attempts to extract information from a distribution that do not require human labor to annotate examples. It involves observing several examples of a random vector x, and attempting to implicitly or explicitly learn the probability distribution p(x), or some interesting properties of that distribution.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 161 (Human page: 162)",
+            "answer_correctness": 0.2545,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7515,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "161 (Human page: 162)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0161_002_001123",
+                "chunk_0120_002_000999",
+                "chunk_0120_001_000998",
+                "chunk_0543_001_002304",
+                "chunk_0502_001_002182"
+            ]
+        },
+        {
+            "question": "What is clustering?",
+            "type": "lookup",
+            "expected_answer": "Clustering consists of dividing a dataset into groups of similar examples.",
+            "generated_answer": "Clustering is a method of grouping similar posts together without relating the clusters to each other. It can be either flat or hierarchical. Flat clustering divides the posts into a set of clusters without relating the clusters to each other, while hierarchical clustering creates a hierarchy of clusters.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 86 (Human page: 87)",
+            "answer_correctness": 0.2564,
+            "faithfulness": 0.8621,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7062,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "86 (Human page: 87)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0088_000_000185",
+                "chunk_0086_000_000181",
+                "chunk_0166_000_001136",
+                "chunk_0071_000_000144",
+                "chunk_0165_001_001134"
+            ]
+        },
+        {
+            "question": "What is a cost function?",
+            "type": "lookup",
+            "expected_answer": "A cost function measures how well a model performs and provides an objective that can be optimized during learning.",
+            "generated_answer": "The cost function is typically a function that includes at least one term that causes the learning process to perform statistical estimation. The most common cost function is the negative log-likelihood, so that minimizing the cost function causes maximum likelihood estimation. The cost function may also include additional terms, such as regularization terms.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 169 (Human page: 170)",
+            "answer_correctness": 0.1887,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7296,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "169 (Human page: 170)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0169_002_001149",
+                "chunk_0169_000_001147",
+                "chunk_0248_002_001384",
+                "chunk_0196_000_001219",
+                "chunk_0195_001_001217"
+            ]
+        },
+        {
+            "question": "What is maximum likelihood estimation?",
+            "type": "lookup",
+            "expected_answer": "Maximum likelihood estimation is a method for selecting model parameters by maximizing the likelihood of the observed training data.",
+            "generated_answer": "Maximum likelihood estimation is a procedure that can be used to estimate the parameters of a model. It is based on the idea of maximizing the likelihood of observing the data given the model parameters. The maximum likelihood estimator has several desirable properties, including consistency, which means that as the number of training examples approaches infinity, the maximum likelihood estimate of a parameter converges to the true value of the parameter.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 149",
+            "answer_correctness": 0.4,
+            "faithfulness": 0.814,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.738,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "149"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0149_001_001085",
+                "chunk_0452_003_002015",
+                "chunk_0635_002_002593",
+                "chunk_0148_001_001082",
+                "chunk_0151_001_001092"
+            ]
+        },
+        {
+            "question": "What is regularization?",
+            "type": "lookup",
+            "expected_answer": "Regularization introduces constraints or penalties that discourage overly complex models and can improve generalization.",
+            "generated_answer": "Regularization is any modification we make to a learning algorithm that is intended to reduce its generalization error but not its training error.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 243",
+            "answer_correctness": 0.1818,
+            "faithfulness": 0.9474,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7097,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "243"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0243_000_001366",
+                "chunk_0244_000_001369",
+                "chunk_0243_001_001367",
+                "chunk_0245_000_001373",
+                "chunk_0246_000_001376"
+            ]
+        },
+        {
+            "question": "What is dropout?",
+            "type": "lookup",
+            "expected_answer": "Dropout is a regularization technique in which units are randomly omitted during training.",
+            "generated_answer": "Dropout is a special case of dropout where each product between a single scalar weight and a single hidden unit state is considered a unit that can be dropped (Wan 2013 et al.,). It is also described as a form of stochastic behavior that makes predictions by averaging over multiple stochastic decisions, implementing a form of bagging with parameter sharing.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 281 (Human page: 282)",
+            "answer_correctness": 0.1034,
+            "faithfulness": 0.9333,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6789,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "281 (Human page: 282)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0281_003_001486",
+                "chunk_0282_001_001488",
+                "chunk_0282_002_001489",
+                "chunk_0281_002_001485",
+                "chunk_0280_002_001481"
+            ]
+        },
+        {
+            "question": "What is early stopping?",
+            "type": "lookup",
+            "expected_answer": "Early stopping is a regularization strategy that stops training before continued optimization causes poorer generalization.",
+            "generated_answer": "Early stopping is a very unobtrusive form of regularization that requires almost no change in the underlying training procedure, the objective function, or the set of allowable parameter values. It is easy to use early stopping without damaging the learning dynamics. (Source: data\\raw\\Deep_Learning.pdf, Page: 263 (Human page: 264))\n\nEarly stopping is also described as a very eﬃcient hyperparameter selection algorithm, where the number of training steps is just another hyperparameter. (Source: data\\raw\\Deep_Learning.pdf, Page: 262 (Human page: 263))\n\nEarly stopping involves monitoring the validation set error in order to stop the trajectory at a particularly good point in space. (Source: data\\raw\\Deep_Learning.pdf, Page: 267 (Human page: 268))\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 262, 263, 267",
+            "answer_correctness": 0.1628,
+            "faithfulness": 0.8451,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6693,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "262, 263, 267"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0263_002_001432",
+                "chunk_0267_002_001444",
+                "chunk_0262_001_001429",
+                "chunk_0264_002_001436",
+                "chunk_0263_003_001433"
+            ]
+        },
+        {
+            "question": "What is back-propagation?",
+            "type": "lookup",
+            "expected_answer": "Back-propagation is a differentiation algorithm used to efficiently compute gradients through neural networks.",
+            "generated_answer": "Back-propagation is an algorithm that computes the chain rule, with a specific order of operations that is highly efficient. It is a method for computing the gradient of a function, and it can be used to compute derivatives of any function. Back-propagation is often misunderstood as being specific to multilayer neural networks, but in principle, it can compute derivatives of any function.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 219 (Human page: 220)\n\nAdditionally, back-propagation is described as a simple and inexpensive procedure for computing the gradient, and it is used in conjunction with another algorithm, such as stochastic gradient descent, to perform learning using this gradient.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 219 (Human page: 220)\n\nIt is also mentioned that back-propagation is formally described in algorithm 6.5.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 231 (Human page: 232)\n\nFurthermore, back-propagation is used to compute the gradient ∇xf(x y,) for an arbitrary function f, where x is a set of variables whose derivatives are desired, and y is an additional set of variables that are inputs to the function but whose derivatives are not required.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 219 (Human page: 220)\n\nAnd, back-propagation is used to compute ∇HJ = GW (2)using the back-propagation rule for the first argument to the matrix multiplication operation.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 235 (Human page: 236)",
+            "answer_correctness": 0.202,
+            "faithfulness": 0.9176,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7066,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "219 (Human page: 220)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "231 (Human page: 232)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "235 (Human page: 236)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0220_002_001298",
+                "chunk_0219_001_001294",
+                "chunk_0231_003_001330",
+                "chunk_0219_000_001293",
+                "chunk_0235_001_001340"
+            ]
+        },
+        {
+            "question": "What is a convolutional network?",
+            "type": "lookup",
+            "expected_answer": "A convolutional network is a neural network architecture that uses convolution operations and is especially useful for structured data such as images.",
+            "generated_answer": "A convolutional network is a specialized kind of neural network for processing data that has a known, grid-like topology. Examples include time-series data, which can be thought of as a 1D grid taking samples at regular time intervals, and image data, which can be thought of as a 2D grid of pixels.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 345 (Human page: 346)",
+            "answer_correctness": 0.3636,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7879,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "345 (Human page: 346)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0345_000_001692",
+                "chunk_0350_000_001705",
+                "chunk_0361_003_001737",
+                "chunk_0366_000_001751",
+                "chunk_0345_001_001693"
+            ]
+        },
+        {
+            "question": "What is pooling in a convolutional network?",
+            "type": "lookup",
+            "expected_answer": "Pooling is an operation used in convolutional networks to aggregate information over local regions.",
+            "generated_answer": "Pooling in a convolutional network is a function that replaces the output of the net at a certain location with a summary statistic of the nearby outputs. For example, the max pooling function replaces the output with the maximum value of the nearby outputs. (Source: data\\raw\\Deep_Learning.pdf, Page: 354)\n\nAdditionally, pooling is an operation that almost all convolutional networks employ, and it can cause underfitting if the assumptions made by the prior are not reasonably accurate. (Source: data\\raw\\Deep_Learning.pdf, Page: 362)\n\nPooling can also be considered as an infinitely strong prior that each unit should be invariant to small translations. (Source: data\\raw\\Deep_Learning.pdf, Page: 362)\n\nThere are different types of pooling, such as max pooling, and some examples of complete convolutional network architectures for classification using convolution and pooling are shown in figure 9.11. (Source: data\\raw\\Deep_Learning.pdf, Page: 360)\n\n(Source: data\\raw\\Deep_Learning.pdf, Page: 360)\n(Source: data\\raw\\Deep_Learning.pdf, Page: 362)\n(Source: data\\raw\\Deep_Learning.pdf, Page: 354)\n(Source: data\\raw\\Deep_Learning.pdf, Page: 360)",
+            "answer_correctness": 0.1616,
+            "faithfulness": 0.8118,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.3245,
+            "evaluation": "incorrect",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0362_000_001739",
+                "chunk_0360_001_001731",
+                "chunk_0354_002_001717",
+                "chunk_0345_001_001693",
+                "chunk_0360_000_001730"
+            ]
+        },
+        {
+            "question": "What is a recurrent neural network?",
+            "type": "lookup",
+            "expected_answer": "A recurrent neural network is a neural network architecture designed for processing sequences by maintaining recurrent connections over time.",
+            "generated_answer": "A recurrent neural network is a family of neural networks for processing sequential data, specialized for processing a sequence of values x(1),..., x() τ, and can scale to much longer sequences than would be practical for networks without sequence-based specialization. (Source: data\\raw\\Deep_Learning.pdf, Page: 388 (Human page: 389))\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 388 (Human page: 389)",
+            "answer_correctness": 0.2909,
+            "faithfulness": 0.775,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6886,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "388 (Human page: 389)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0388_000_001820",
+                "chunk_0391_000_001829",
+                "chunk_0394_000_001838",
+                "chunk_0415_001_001896",
+                "chunk_0389_000_001823"
+            ]
+        },
+        {
+            "question": "What problem do long-term dependencies create for recurrent networks?",
+            "type": "lookup",
+            "expected_answer": "Long-term dependencies make it difficult for recurrent networks to learn relationships between events that are far apart in a sequence.",
+            "generated_answer": "The basic problem is that gradients propagated over many stages tend to either vanish (most of the time) or explode (rarely, but with much damage to the optimization). Even if we assume that the parameters are such that the recurrent network is stable (can store memories, with gradients not exploding), the difficulty with long-term dependencies arises from the exponentially smaller weights given to long-term interactions (involving the multiplication of many Jacobians) compared to short-term ones.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 416 (Human page: 417)",
+            "answer_correctness": 0.1795,
+            "faithfulness": 0.9649,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7148,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "416 (Human page: 417)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0416_003_001900",
+                "chunk_0416_002_001899",
+                "chunk_0739_001_002911",
+                "chunk_0005_000_000691",
+                "chunk_0418_003_001906"
+            ]
+        },
+        {
+            "question": "What are LSTM networks?",
+            "type": "lookup",
+            "expected_answer": "LSTM networks are gated recurrent neural networks designed to help handle long-term dependencies in sequential data.",
+            "generated_answer": "LSTM networks, or Long Short-Term Memory networks, were introduced by Hochreiter and Schmidhuber in 1997 to resolve some of the fundamental mathematical difficulties in modeling long sequences. They are widely used for many sequence modeling tasks, including natural language processing tasks at Google.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 33 (Human page: 34)",
+            "answer_correctness": 0.2545,
+            "faithfulness": 0.9487,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7344,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "33 (Human page: 34)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0033_001_000766",
+                "chunk_0425_002_001930",
+                "chunk_0426_001_001933",
+                "chunk_0425_001_001929",
+                "chunk_0424_000_001926"
+            ]
+        },
+        {
+            "question": "What is the purpose of performance metrics?",
+            "type": "lookup",
+            "expected_answer": "Performance metrics provide quantitative measures that can be used to evaluate how well a machine learning system performs on its intended task.",
+            "generated_answer": "Performance metrics are used to determine a reasonable level of performance to expect, guide design decisions, and measure the effectiveness of a complete application that includes machine learning components. They are also used to tailor the choice of metric to the business goals for the project and to set a high accuracy requirement for a project, as seen in the Street View transcription system.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 438 (Human page: 439)",
+            "answer_correctness": 0.2687,
+            "faithfulness": 0.9556,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7414,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "438 (Human page: 439)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0437_000_001963",
+                "chunk_0438_001_001967",
+                "chunk_0438_000_001966",
+                "chunk_0456_000_002026",
+                "chunk_0437_001_001964"
+            ]
+        },
+        {
+            "question": "Why did improvements in both datasets and computing infrastructure contribute to the increased usefulness of deep learning?",
+            "type": "multi_hop",
+            "expected_answer": "Deep learning became more useful as larger amounts of training data became available and computer infrastructure improved. Better infrastructure allowed larger models to be trained, while larger datasets provided more information from which those models could learn.",
+            "generated_answer": "Improvements in both datasets and computing infrastructure contributed to the increased usefulness of deep learning because they allowed for the training of deeper networks. This is stated in the following context:\n\n\"In recent years, it has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets and techniques to train deeper networks.\"\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 41 (Human page: 42)\n\nAdditionally, the context also mentions that deep learning models have grown in size over time as computer infrastructure (both hardware and software) for deep learning has improved, and that deep learning has solved increasingly complicated applications with increasing accuracy over time.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 26 (Human page: 27)\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 26 (Human page: 27)\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 38 (Human page: 39)",
+            "answer_correctness": 0.3061,
+            "faithfulness": 0.8657,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7239,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "41 (Human page: 42)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "26 (Human page: 27)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "38 (Human page: 39)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0041_001_000792",
+                "chunk_0026_002_000745",
+                "chunk_0038_000_000781",
+                "chunk_0026_001_000744",
+                "chunk_0034_002_000771"
+            ]
+        },
+        {
+            "question": "How do deep representations help address the challenges created by high-dimensional data?",
+            "type": "multi_hop",
+            "expected_answer": "High-dimensional data creates the curse of dimensionality, making generalization difficult. Deep learning uses deep, distributed representations and composition of learned features to obtain advantages that help overcome these challenges.",
+            "generated_answer": "Deep representations help address the challenges created by high-dimensional data by providing exponential gains in the relationship between the number of examples and the number of regions that can be distinguished, counteracting the exponential challenges posed by the curse of dimensionality (Source: data\\raw\\Deep_Learning.pdf, Page: 175).\n\nAdditionally, deep learning allows the computer to build complex concepts out of simpler concepts, which can help to reduce the size of a representation by finding and removing redundancies, resulting in low-dimensional representations that often yield elements with fewer or weaker dependencies than the original high-dimensional data (Source: data\\raw\\Deep_Learning.pdf, Page: 162).\n\nFurthermore, deep learning models, such as autoencoders, can learn to represent high-dimensional data in a lower-dimensional space, which can improve performance on many tasks, such as classification, and reduce computational costs (Source: data\\raw\\Deep_Learning.pdf, Page: 539).\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 175",
+            "answer_correctness": 0.2679,
+            "faithfulness": 0.7976,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6885,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "175"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0175_003_001168",
+                "chunk_0170_001_001151",
+                "chunk_0162_001_001125",
+                "chunk_0020_002_000729",
+                "chunk_0539_002_002292"
+            ]
+        },
+        {
+            "question": "How are supervised and unsupervised learning different when considering the information available during training?",
+            "type": "multi_hop",
+            "expected_answer": "Supervised learning uses examples that include a target or label, while unsupervised learning works without such a supervision signal and attempts to extract information from the distribution of the data.",
+            "generated_answer": "In supervised learning, the target y is provided by an instructor or teacher, giving the machine learning system information about what to do. In contrast, unsupervised learning does not have an instructor or teacher, and the algorithm must learn to make sense of the data without this guide.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 120 (Human page: 121)",
+            "answer_correctness": 0.375,
+            "faithfulness": 0.8919,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7556,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "120 (Human page: 121)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0546_002_002315",
+                "chunk_0120_002_000999",
+                "chunk_0544_001_002308",
+                "chunk_0547_000_002317",
+                "chunk_0161_002_001123"
+            ]
+        },
+        {
+            "question": "Why can deep learning models benefit more from increasing amounts of training data?",
+            "type": "multi_hop",
+            "expected_answer": "The book describes increasing training data as an important historical trend in deep learning. Larger datasets provide more examples from which large models can learn, while improved infrastructure makes training those larger models practical.",
+            "generated_answer": "The amount of skill required to get good performance from a deep learning algorithm reduces as the amount of training data increases. \n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 34 (Human page: 35)",
+            "answer_correctness": 0.28,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.76,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "34 (Human page: 35)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0034_002_000771",
+                "chunk_0441_002_001978",
+                "chunk_0026_001_000744",
+                "chunk_0026_002_000745",
+                "chunk_0542_002_002301"
+            ]
+        },
+        {
+            "question": "How does regularization relate to overfitting?",
+            "type": "multi_hop",
+            "expected_answer": "Overfitting occurs when a model does not generalize well to new examples. Regularization is used to discourage excessively complex solutions and thereby improve generalization.",
+            "generated_answer": "Regularization is used to counteract overfitting. It can be used to prevent the model from becoming too complex and fitting the noise in the training data. This is because when the number of features is greater than the number of examples, you always get zero training errors with OLS, except perhaps for issues due to rounding off, which is rarely a sign that your model will do well in terms of generalization.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 189 (Human page: 190)",
+            "answer_correctness": 0.3291,
+            "faithfulness": 0.8393,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7228,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "189 (Human page: 190)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0189_002_000401",
+                "chunk_0189_001_000400",
+                "chunk_0254_002_001403",
+                "chunk_0243_000_001366",
+                "chunk_0244_000_001369"
+            ]
+        },
+        {
+            "question": "How do hyperparameters and validation sets work together during model development?",
+            "type": "multi_hop",
+            "expected_answer": "Hyperparameters control aspects of a learning algorithm, and validation data can be used to compare different hyperparameter choices and select a model configuration before final testing.",
+            "generated_answer": "During model development, hyperparameters and validation sets work together as follows: the validation set is used to estimate the generalization error during or after training, allowing for the hyperparameters to be updated accordingly. The validation set is typically constructed from the training data, with about 80% of the training data used for training and 20% for validation. The validation set error will underestimate the generalization error, though typically by a smaller amount than the training error. After hyperparameter optimization is complete, the generalization error may be estimated using the test set.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 136 (Human page: 137)",
+            "answer_correctness": 0.2933,
+            "faithfulness": 0.902,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7318,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "136 (Human page: 137)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0450_003_002008",
+                "chunk_0136_001_001051",
+                "chunk_0136_002_001052",
+                "chunk_0135_002_001049",
+                "chunk_0450_002_002007"
+            ]
+        },
+        {
+            "question": "How does back-propagation support gradient-based learning in neural networks?",
+            "type": "multi_hop",
+            "expected_answer": "Back-propagation efficiently computes gradients through the layers of a neural network. Those gradients can then be used by gradient-based optimization methods to update the model parameters.",
+            "generated_answer": "Back-propagation allows the information from the cost to flow backwards through the network, in order to compute the gradient. This is done using a simple and inexpensive procedure. Back-propagation is used in conjunction with another algorithm, such as stochastic gradient descent, to perform learning using this gradient.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 219",
+            "answer_correctness": 0.2903,
+            "faithfulness": 0.9444,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7449,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "219"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0219_001_001294",
+                "chunk_0193_000_001209",
+                "chunk_0186_001_001194",
+                "chunk_0219_000_001293",
+                "chunk_0242_001_001364"
+            ]
+        },
+        {
+            "question": "Why are convolution and pooling useful together in convolutional neural networks?",
+            "type": "multi_hop",
+            "expected_answer": "Convolution extracts local patterns using learned filters, while pooling aggregates information over local regions. Together they provide a useful way to process structured spatial data such as images.",
+            "generated_answer": "Convolution and pooling can cause underfitting, but they are useful together in convolutional neural networks because they can cause the network to be invariant to small translations of the input. Pooling helps to make the representation become approximately invariant to small translations of the input, which can be a very useful property if we care more about whether some feature is present than exactly where it is.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 362 (Human page: 363)",
+            "answer_correctness": 0.1867,
+            "faithfulness": 0.9375,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7081,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "362 (Human page: 363)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0362_000_001739",
+                "chunk_0360_000_001730",
+                "chunk_0345_001_001693",
+                "chunk_0345_000_001692",
+                "chunk_0357_000_001722"
+            ]
+        },
+        {
+            "question": "Why are gated recurrent networks useful for sequence modeling?",
+            "type": "multi_hop",
+            "expected_answer": "Sequence models can struggle with long-term dependencies. Gated recurrent architectures such as LSTMs introduce mechanisms that help control the flow of information and make learning long-term relationships easier.",
+            "generated_answer": "Gated recurrent networks are useful for sequence modeling because they can create paths through time that have derivatives that neither vanish nor explode. This is achieved by creating connection weights that may change, generalizing the idea of leaky units. They also allow the time scale of integration to change dynamically, based on the input sequence, because the time constants are output by the model itself.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 423 (Human page: 424)",
+            "answer_correctness": 0.1795,
+            "faithfulness": 0.92,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6998,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "423 (Human page: 424)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0425_000_001928",
+                "chunk_0397_000_001847",
+                "chunk_0423_002_001925",
+                "chunk_0388_000_001820",
+                "chunk_0433_000_001951"
+            ]
+        },
+        {
+            "question": "How do exploration and exploitation differ in reinforcement learning?",
+            "type": "multi_hop",
+            "expected_answer": "Exploitation means choosing actions based on the current best policy to obtain a known or expected high reward. Exploration means trying actions to obtain additional information and training data. Reinforcement learning must balance these two goals.",
+            "generated_answer": "Exploration refers to taking actions specifically in order to obtain more training data, whereas exploitation refers to taking actions that come from the current, best version of the learned policy—actions that we know will achieve a high reward.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 496 (Human page: 497)",
+            "answer_correctness": 0.4444,
+            "faithfulness": 0.9355,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7933,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "496 (Human page: 497)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0496_002_002165",
+                "chunk_0497_001_002168",
+                "chunk_0495_002_002161",
+                "chunk_0497_000_002167",
+                "chunk_0040_002_000789"
+            ]
+        },
+        {
+            "question": "Why is evaluating reinforcement learning different from evaluating ordinary supervised learning?",
+            "type": "multi_hop",
+            "expected_answer": "In reinforcement learning, the learner interacts with an environment and its policy influences which inputs and actions are encountered. This makes evaluation less straightforward than using a fixed test set with known target outputs.",
+            "generated_answer": "Evaluating reinforcement learning is different from evaluating ordinary supervised learning because in reinforcement learning, the policy itself determines which inputs will be seen, making it not straightforward to evaluate the learner's performance using a fixed set of test set input values. This is due to the feedback loop between the learner and the environment, where the learner interacts with the environment and receives feedback in the form of rewards.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 497 (Human page: 498)",
+            "answer_correctness": 0.4691,
+            "faithfulness": 0.898,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.789,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "497 (Human page: 498)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0497_001_002168",
+                "chunk_0495_002_002161",
+                "chunk_0553_000_002338",
+                "chunk_0496_001_002164",
+                "chunk_0496_002_002165"
+            ]
+        },
+        {
+            "question": "How does the definition of machine learning connect experience, tasks, and performance?",
+            "type": "multi_hop",
+            "expected_answer": "The book describes learning in terms of a program improving its performance on a class of tasks, as measured by a performance measure, through experience.",
+            "generated_answer": "According to Mitchell 1997, the definition of machine learning is: \"A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.\"\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 114 (Human page: 115)",
+            "answer_correctness": 0.5263,
+            "faithfulness": 0.9722,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.8328,
+            "evaluation": "correct",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "114 (Human page: 115)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0114_001_000976",
+                "chunk_0114_000_000975",
+                "chunk_0118_002_000992",
+                "chunk_0023_002_000739",
+                "chunk_0115_000_000978"
+            ]
+        },
+        {
+            "question": "Why can the distinction between supervised and unsupervised learning sometimes be blurred?",
+            "type": "multi_hop",
+            "expected_answer": "The distinction is not formally rigid. Some machine learning technologies can be used for both supervised and unsupervised tasks, and an apparently unsupervised problem can sometimes be transformed into supervised learning problems.",
+            "generated_answer": "The distinction between supervised and unsupervised learning can be blurred because there is no objective test for distinguishing whether a value is a feature or a target provided by a supervisor. This is stated in the following context:\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 161 (Human page: 162)\n\nAdditionally, many machine learning technologies can be used to perform both tasks, and the lines between them are often blurred. This is mentioned in the following context:\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 120 (Human page: 121)\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 161 (Human page: 162)\nPage: 120 (Human page: 121)",
+            "answer_correctness": 0.4167,
+            "faithfulness": 0.913,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7766,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "161 (Human page: 162)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "120 (Human page: 121)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0120_002_000999",
+                "chunk_0161_002_001123",
+                "chunk_0547_000_002317",
+                "chunk_0546_002_002315",
+                "chunk_0120_001_000998"
+            ]
+        },
+        {
+            "question": "How does the curse of dimensionality motivate the use of deep learning?",
+            "type": "multi_hop",
+            "expected_answer": "As the number of dimensions increases, many machine learning problems become much harder and generalization becomes more difficult. Deep learning was developed in part to overcome these limitations by learning complicated functions in high-dimensional spaces.",
+            "generated_answer": "The curse of dimensionality motivates the use of deep learning because it makes many machine learning problems exceedingly difficult when the number of dimensions in the data is high. This phenomenon is known as the curse of dimensionality. Deep learning was designed to overcome the obstacles posed by the curse of dimensionality, including high computational costs and the need to generalize well on AI tasks such as recognizing speech or recognizing objects.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 170 (Human page: 171)",
+            "answer_correctness": 0.439,
+            "faithfulness": 0.9184,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7858,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "170 (Human page: 171)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0170_001_001151",
+                "chunk_0175_003_001168",
+                "chunk_0479_001_002105",
+                "chunk_0539_002_002292",
+                "chunk_0171_001_001154"
+            ]
+        },
+        {
+            "question": "What is the best machine learning algorithm?",
+            "type": "ambiguous",
+            "expected_answer": "The documents do not identify one universally best machine learning algorithm. The appropriate algorithm depends on the task, data, model assumptions, and evaluation criteria.",
+            "generated_answer": "I could not find the answer in the provided documents.\n\nHowever, based on the context, it seems that the no free lunch theorem suggests that there is no universally best machine learning algorithm. \n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 131 (Human page: 132)",
+            "answer_correctness": 0.3673,
+            "faithfulness": 0.7143,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6939,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "131 (Human page: 132)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0131_003_001036",
+                "chunk_0324_002_001625",
+                "chunk_0113_002_000974",
+                "chunk_0135_002_001049",
+                "chunk_0135_001_001048"
+            ]
+        },
+        {
+            "question": "How much deep learning is enough?",
+            "type": "ambiguous",
+            "expected_answer": "The question is ambiguous because the appropriate model depth depends on the architecture, task, and definition of depth. The book notes that there is no single consensus about how much depth is required to qualify a model as deep.",
+            "generated_answer": "Unfortunately, the provided document context does not directly answer the question \"How much deep learning is enough?\" However, Context 1 mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having more training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 mentions that \"One of the key factors responsible for the improvement in neural network’s accuracy and the improvement of the complexity of tasks they can solve between the 1980s and today is the dramatic increase in the size of the networks we use.\" This suggests that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nBut Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 mentions that \"In recent years, it has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets and techniques to train deeper networks.\" This suggests that having more powerful computers, larger datasets, and techniques to train deeper networks can make deep learning more effective, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nBut Context 3 also mentions that \"Because the size of neural networks is of paramount importance, deep learning\" This implies that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"One of the key factors responsible for the improvement in neural network’s accuracy and the improvement of the complexity of tasks they can solve between the 1980s and today is the dramatic increase in the size of the networks we use.\" This suggests that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"The years ahead are full of challenges and opportunities to improve deep learning even further and bring it to new frontiers.\" This suggests that there is always room for improvement in deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"Because the size of neural networks is of paramount importance, deep learning\" This implies that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"In recent years, it has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets and techniques to train deeper networks.\" This suggests that having more powerful computers, larger datasets, and techniques to train deeper networks can make deep learning more effective, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"One of the key factors responsible for the improvement in neural network’s accuracy and the improvement of the complexity of tasks they can solve between the 1980s and today is the dramatic increase in the size of the networks we use.\" This suggests that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"The years ahead are full of challenges and opportunities to improve deep learning even further and bring it to new frontiers.\" This suggests that there is always room for improvement in deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"Because the size of neural networks is of paramount importance, deep learning\" This implies that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"In recent years, it has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets and techniques to train deeper networks.\" This suggests that having more powerful computers, larger datasets, and techniques to train deeper networks can make deep learning more effective, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"One of the key factors responsible for the improvement in neural network’s accuracy and the improvement of the complexity of tasks they can solve between the 1980s and today is the dramatic increase in the size of the networks we use.\" This suggests that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"The years ahead are full of challenges and opportunities to improve deep learning even further and bring it to new frontiers.\" This suggests that there is always room for improvement in deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"Because the size of neural networks is of paramount importance, deep learning\" This implies that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"In recent years, it has seen tremendous growth in its popularity and usefulness, due in large part to more powerful computers, larger datasets and techniques to train deeper networks.\" This suggests that having more powerful computers, larger datasets, and techniques to train deeper networks can make deep learning more effective, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"One of the key factors responsible for the improvement in neural network’s accuracy and the improvement of the complexity of tasks they can solve between the 1980s and today is the dramatic increase in the size of the networks we use.\" This suggests that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4 also mentions that \"The years ahead are full of challenges and opportunities to improve deep learning even further and bring it to new frontiers.\" This suggests that there is always room for improvement in deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 1 also mentions that \"Fortunately, the amount of skill required reduces as the amount of training data increases.\" This implies that having enough training data can make deep learning easier to use, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 3 also mentions that \"Because the size of neural networks is of paramount importance, deep learning\" This implies that having a large enough network size is important for deep learning, but it does not provide a specific answer to the question.\n\nI could not find the answer in the provided documents.\n\nHowever, Context 4",
+            "answer_correctness": 0.2069,
+            "faithfulness": 0.7895,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.3321,
+            "evaluation": "incorrect",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0034_002_000771",
+                "chunk_0026_002_000745",
+                "chunk_0458_001_002033",
+                "chunk_0041_001_000792",
+                "chunk_0030_003_000756"
+            ]
+        },
+        {
+            "question": "Which model should I use?",
+            "type": "ambiguous",
+            "expected_answer": "The question is too ambiguous to answer without knowing the task, dataset, objective, and constraints.",
+            "generated_answer": "The choice of model depends on the structure of your data. If you want to perform supervised learning with fixed-size vectors as input, use a feedforward network with fully connected layers. If the input has known topological structure (for example, if the input is an image), use a convolutional network. If your input or output is a sequence, use a gated recurrent net (LSTM or GRU).\n\nAlternatively, if you are interested in a sparse solution, a pure Lasso solution may be more appropriate.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 440 (Human page: 441)\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 573 (Human page: 574)\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 194 (Human page: 195)",
+            "answer_correctness": 0.0833,
+            "faithfulness": 0.9483,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6772,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "440 (Human page: 441)"
+                },
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "573 (Human page: 574)"
+                },
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "194 (Human page: 195)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0440_001_001974",
+                "chunk_0059_000_000116",
+                "chunk_0194_002_000413",
+                "chunk_0440_000_001973",
+                "chunk_0573_002_002404"
+            ]
+        },
+        {
+            "question": "Is deep learning always better than machine learning?",
+            "type": "ambiguous",
+            "expected_answer": "The documents do not support the claim that deep learning is always better. Deep learning is a specific kind of machine learning and is particularly useful for some complex tasks and high-dimensional data.",
+            "generated_answer": "No, according to Context 3, \"In other words, in some sense, no machine learning algorithm is universally any better than any other. The most sophisticated algorithm we can conceive of has the same average\" (Source: data\\raw\\Deep_Learning.pdf, Page: 131).",
+            "answer_correctness": 0.2903,
+            "faithfulness": 0.8286,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.373,
+            "evaluation": "incorrect",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0028_003_000750",
+                "chunk_0168_002_001145",
+                "chunk_0131_003_001036",
+                "chunk_0436_000_001960",
+                "chunk_0026_002_000745"
+            ]
+        },
+        {
+            "question": "What does better performance mean?",
+            "type": "ambiguous",
+            "expected_answer": "The question is ambiguous because performance depends on the task and the performance metric being used.",
+            "generated_answer": "Better performance means that the model is able to achieve a higher accuracy or a lower error rate when evaluated on a test set of data that it has not seen before. This is often measured using a performance measure such as the R2 score, which is used in the context of regression problems.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 192 (Human page: 193)",
+            "answer_correctness": 0.1754,
+            "faithfulness": 0.7955,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.657,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "192 (Human page: 193)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0154_001_000326",
+                "chunk_0453_001_002017",
+                "chunk_0154_000_000325",
+                "chunk_0192_000_000408",
+                "chunk_0119_001_000994"
+            ]
+        },
+        {
+            "question": "What is a large dataset?",
+            "type": "ambiguous",
+            "expected_answer": "The documents discuss increasing dataset sizes as an important trend, but they do not provide one universal numeric definition of what constitutes a large dataset.",
+            "generated_answer": "A large dataset is one that contains hundreds of thousands to tens of millions of examples. This is according to Context 4: Source: data\\raw\\Deep_Learning.pdf, Page: 36 (Human page: 37).\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 36 (Human page: 37)",
+            "answer_correctness": 0.1923,
+            "faithfulness": 0.7143,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.6355,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "36 (Human page: 37)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0283_000_000596",
+                "chunk_0035_000_000773",
+                "chunk_0284_000_000598",
+                "chunk_0036_001_000778",
+                "chunk_0034_003_000772"
+            ]
+        },
+        {
+            "question": "Which neural network is the most powerful?",
+            "type": "ambiguous",
+            "expected_answer": "The documents do not identify one universally most powerful neural network. Different architectures are suited to different tasks.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 0.2308,
+            "faithfulness": 0.3333,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.188,
+            "evaluation": "incorrect",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0241_000_001359",
+                "chunk_0035_003_000776",
+                "chunk_0035_002_000775",
+                "chunk_0273_001_001462",
+                "chunk_0035_001_000774"
+            ]
+        },
+        {
+            "question": "Why is this method better?",
+            "type": "ambiguous",
+            "expected_answer": "The question is ambiguous because it does not specify which method or which performance criterion is being discussed.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 0.16,
+            "faithfulness": 0.6667,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.2756,
+            "evaluation": "incorrect",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0060_003_000122",
+                "chunk_0274_000_000579",
+                "chunk_0069_000_000141",
+                "chunk_0343_002_001688",
+                "chunk_0294_002_001525"
+            ]
+        },
+        {
+            "question": "How deep should a network be?",
+            "type": "ambiguous",
+            "expected_answer": "There is no single answer. The book notes that there is no single correct value for the depth of an architecture and no consensus about how much depth is required to qualify as deep.",
+            "generated_answer": "The ideal network architecture for a task must be found via experimentation guided by monitoring the validation set error. Deeper networks often are able to use far fewer units per layer and far fewer parameters and often generalize to the test set, but are also often harder to optimize.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 213 (Human page: 214)",
+            "answer_correctness": 0.1562,
+            "faithfulness": 1.0,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7188,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "213 (Human page: 214)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0213_000_001274",
+                "chunk_0217_000_001289",
+                "chunk_0218_000_001291",
+                "chunk_0340_002_001676",
+                "chunk_0677_002_002712"
+            ]
+        },
+        {
+            "question": "What is the best way to train a model?",
+            "type": "ambiguous",
+            "expected_answer": "The question is ambiguous because training choices depend on the model, dataset, objective, optimization method, and other factors.",
+            "generated_answer": "The best way to train a model is to train it on more data. One way to get around the limited amount of data is to create fake data and add it to the training set. This approach is easiest for classification.\n\nSource: data\\raw\\Deep_Learning.pdf\nPage: 255",
+            "answer_correctness": 0.2609,
+            "faithfulness": 0.9655,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.7421,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Deep_Learning.pdf",
+                    "page": "255"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0338_000_001668",
+                "chunk_0255_000_001405",
+                "chunk_0546_003_002316",
+                "chunk_0168_000_001143",
+                "chunk_0156_001_000331"
+            ]
+        },
+        {
+            "question": "What is the capital city of France?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.4444,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4815,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0101_002_000216",
+                "chunk_0006_000_000008",
+                "chunk_0736_002_002903",
+                "chunk_0004_001_000006",
+                "chunk_0471_001_002079"
+            ]
+        },
+        {
+            "question": "Who is the current president of the United States?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.5556,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.5185,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0105_001_000224",
+                "chunk_0106_002_000229",
+                "chunk_0627_002_002566",
+                "chunk_0467_002_002066",
+                "chunk_0071_001_000862"
+            ]
+        },
+        {
+            "question": "What is the population of India?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.4444,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4815,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0251_003_001393",
+                "chunk_0101_002_000216",
+                "chunk_0105_001_000224",
+                "chunk_0458_001_002033",
+                "chunk_0141_001_001065"
+            ]
+        },
+        {
+            "question": "What is the boiling point of water at sea level?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.3333,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4444,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0101_002_000216",
+                "chunk_0099_000_000935",
+                "chunk_0098_002_000934",
+                "chunk_0456_000_002026",
+                "chunk_0188_002_000398"
+            ]
+        },
+        {
+            "question": "Who won the FIFA World Cup in 2022?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.5556,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.5185,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0196_001_000418",
+                "chunk_0313_001_000658",
+                "chunk_0047_000_000086",
+                "chunk_0248_001_000523",
+                "chunk_0006_001_000009"
+            ]
+        },
+        {
+            "question": "What is the current price of Bitcoin?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.6667,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.5556,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0495_003_002162",
+                "chunk_0101_002_000216",
+                "chunk_0180_000_000377",
+                "chunk_0181_001_000381",
+                "chunk_0032_000_000062"
+            ]
+        },
+        {
+            "question": "What is the weather in New York today?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.2222,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4074,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0756_002_002963",
+                "chunk_0779_002_003034",
+                "chunk_0749_001_002941",
+                "chunk_0742_002_002921",
+                "chunk_0788_002_003061"
+            ]
+        },
+        {
+            "question": "What is the latest version of Python?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "According to Context 2, the latest version of Python used throughout the book is 2.7, but it is also mentioned that the code is compatible with version 3.3 and 3.4 as well.\n\nSource: data\\raw\\Building_Machine_Learning_Systems.pdf\nPage: 17 (Human page: 18)",
+            "answer_correctness": 0.0,
+            "faithfulness": 0.9259,
+            "retrieval_relevance": null,
+            "citation_accuracy": 1.0,
+            "overall_score": 0.642,
+            "evaluation": "incorrect",
+            "citations": [
+                {
+                    "source": "data\\raw\\Building_Machine_Learning_Systems.pdf",
+                    "page": "17 (Human page: 18)"
+                }
+            ],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0302_001_000634",
+                "chunk_0017_000_000029",
+                "chunk_0026_002_000052",
+                "chunk_0001_000_000001",
+                "chunk_0027_000_000053"
+            ]
+        },
+        {
+            "question": "Who is the CEO of Google?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.4444,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4815,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0011_001_000706",
+                "chunk_0007_000_000010",
+                "chunk_0006_001_000009",
+                "chunk_0006_000_000008",
+                "chunk_0004_001_000006"
+            ]
+        },
+        {
+            "question": "What is the distance from Earth to the Moon?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.4444,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4815,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0101_002_000216",
+                "chunk_0253_000_000535",
+                "chunk_0202_001_000432",
+                "chunk_0285_001_001498",
+                "chunk_0107_002_000232"
+            ]
+        },
+        {
+            "question": "What is the population of Japan?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.3333,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.4444,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0251_003_001393",
+                "chunk_0101_002_000216",
+                "chunk_0748_002_002939",
+                "chunk_0748_001_002938",
+                "chunk_0753_001_002953"
+            ]
+        },
+        {
+            "question": "What is the current stock price of Apple?",
+            "type": "no_answer",
+            "expected_answer": "The provided documents do not contain the answer to this question.",
+            "generated_answer": "I could not find the answer in the provided documents.",
+            "answer_correctness": 1.0,
+            "faithfulness": 0.5556,
+            "retrieval_relevance": null,
+            "citation_accuracy": 0.0,
+            "overall_score": 0.5185,
+            "evaluation": "correct",
+            "citations": [],
+            "relevant_chunk_ids": [],
+            "retrieved_chunk_ids": [
+                "chunk_0251_003_001393",
+                "chunk_0101_002_000216",
+                "chunk_0180_000_000377",
+                "chunk_0488_001_002136",
+                "chunk_0181_001_000381"
+            ]
+        }
+    ]
+}

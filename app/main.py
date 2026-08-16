@@ -8,6 +8,10 @@ from src.generation.rag_pipeline import (
 )
 
 
+# ============================================================
+# FASTAPI APP
+# ============================================================
+
 app = FastAPI(
     title="RAG Hybrid Search API",
     description=(
@@ -32,6 +36,7 @@ chunks = None
 
 @app.on_event("startup")
 def startup_event():
+
     global bm25, chunks
 
     print("\n========================================")
@@ -54,6 +59,7 @@ def startup_event():
 
 @app.get("/")
 def root():
+
     return {
         "message": "RAG Hybrid Search API is running"
     }
@@ -65,7 +71,9 @@ def root():
 
 @app.get("/health")
 def health():
+
     if bm25 is None or chunks is None:
+
         return {
             "status": "starting",
             "rag_ready": False,
@@ -89,6 +97,7 @@ def health():
 def ask_question(request: QuestionRequest):
 
     if bm25 is None or chunks is None:
+
         raise HTTPException(
             status_code=503,
             detail="RAG system is not ready.",
@@ -97,6 +106,7 @@ def ask_question(request: QuestionRequest):
     question = request.question.strip()
 
     if not question:
+
         raise HTTPException(
             status_code=400,
             detail="Question cannot be empty.",
@@ -110,16 +120,203 @@ def ask_question(request: QuestionRequest):
 
         print(f"Question: {question}")
 
-        answer = rag_answer(
+        # ====================================================
+        # RUN COMPLETE RAG PIPELINE
+        # ====================================================
+
+        result = rag_answer(
             question=question,
             bm25=bm25,
             chunks=chunks,
+            return_details=True,
         )
+
+        # ====================================================
+        # GET ANSWER
+        # ====================================================
+
+        answer = result.get(
+            "answer",
+            "No answer returned.",
+        )
+
+        # ====================================================
+        # GET RETRIEVED RESULTS
+        # ====================================================
+
+        retrieved_results = result.get(
+            "retrieved_results",
+            [],
+        )
+
+        retrieved_chunk_ids = result.get(
+            "retrieved_chunk_ids",
+            [],
+        )
+
+        # ====================================================
+        # BUILD CITATIONS
+        # ====================================================
+
+        citations = []
+
+        for item in retrieved_results:
+
+            metadata = item.get(
+                "metadata",
+                {},
+            )
+
+            if not isinstance(metadata, dict):
+                metadata = {}
+
+            source = metadata.get(
+                "source",
+                "Unknown",
+            )
+
+            page = metadata.get(
+                "page",
+                None,
+            )
+
+            human_page = metadata.get(
+                "human_page",
+                None,
+            )
+
+            reranker_score = item.get(
+                "reranker_score",
+                None,
+            )
+
+            citation = {
+                "source": str(source),
+                "page": page,
+                "human_page": human_page,
+            }
+
+            if reranker_score is not None:
+
+                citation["reranker_score"] = float(
+                    reranker_score
+                )
+
+            citations.append(citation)
+
+        # ====================================================
+        # UNIQUE SOURCES
+        # ====================================================
+
+        unique_sources = []
+
+        for citation in citations:
+
+            source = citation.get("source")
+
+            if (
+                source
+                and source not in unique_sources
+            ):
+
+                unique_sources.append(
+                    source
+                )
+
+        # ====================================================
+        # CALCULATE CONFIDENCE
+        # ====================================================
+
+        confidence = None
+
+        scores = []
+
+        for item in retrieved_results:
+
+            score = item.get(
+                "reranker_score"
+            )
+
+            if score is not None:
+
+                scores.append(
+                    float(score)
+                )
+
+        if scores:
+
+            average_score = (
+                sum(scores) / len(scores)
+            )
+
+            # Convert reranker score to a
+            # dashboard confidence value.
+
+            import math
+
+            confidence = (
+                1
+                / (
+                    1
+                    + math.exp(
+                        -average_score
+                    )
+                )
+            ) * 100
+
+            confidence = max(
+                0,
+                min(
+                    100,
+                    confidence,
+                ),
+            )
+
+        # ====================================================
+        # PRINT RESPONSE INFORMATION
+        # ====================================================
+
+        print("\n========================================")
+        print("           RAG RESPONSE")
+        print("========================================")
+
+        print(
+            f"Answer generated: {bool(answer)}"
+        )
+
+        print(
+            f"Citations: {len(citations)}"
+        )
+
+        print(
+            f"Sources: {len(unique_sources)}"
+        )
+
+        print(
+            f"Confidence: {confidence}"
+        )
+
+        print(
+            f"Retrieved chunks: "
+            f"{len(retrieved_chunk_ids)}"
+        )
+
+        # ====================================================
+        # RETURN RESPONSE
+        # ====================================================
 
         return QuestionResponse(
             question=question,
             answer=answer,
+            citations=citations,
+            sources=unique_sources,
+            confidence=confidence,
+            retrieved_chunk_ids=retrieved_chunk_ids,
         )
+
+    # ========================================================
+    # ERROR HANDLING
+    # ========================================================
 
     except Exception as error:
 
@@ -127,7 +324,10 @@ def ask_question(request: QuestionRequest):
         print("              ERROR")
         print("========================================")
 
-        print(type(error).__name__)
+        print(
+            type(error).__name__
+        )
+
         print(error)
 
         raise HTTPException(

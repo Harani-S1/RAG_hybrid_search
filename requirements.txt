@@ -12,3 +12,8 @@ pymupdf
 fastapi 
 uvicorn
 rank-bm25
+pydantic
+streamlit
+requests
+numpy
+scikit-learn
