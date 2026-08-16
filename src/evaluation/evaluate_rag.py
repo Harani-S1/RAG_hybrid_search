@@ -2,17 +2,23 @@
 Automated RAG Evaluation
 Phase 4 Metrics
 
-Metrics:
-1. Answer Correctness
-2. Faithfulness
-3. Retrieval Relevance
-4. Citation Accuracy
-
 Evaluation types:
 - lookup
 - multi_hop
 - ambiguous
 - no_answer
+
+Important:
+This file evaluates the RAG system.
+It does NOT change the retrieval or generation model itself.
+
+The evaluation logic is question-type aware so that:
+- lookup questions are evaluated for answer correctness
+- multi-hop questions are evaluated for answer correctness
+- ambiguous questions are evaluated for appropriate ambiguity handling
+- no-answer questions are evaluated for correct abstention
+- missing retrieval ground truth is NOT treated as retrieval failure
+- citations are not required for no-answer responses
 """
 
 import sys
@@ -47,14 +53,49 @@ from src.evaluation.golden_dataset import GOLDEN_DATASET
 
 CORRECTNESS_THRESHOLD = 0.50
 
+
+# ============================================================
+# NO-ANSWER PHRASES
+# ============================================================
+
 NO_ANSWER_PHRASES = [
     "i could not find the answer",
     "could not find the answer",
+    "couldn't find the answer",
     "not found in the provided documents",
     "not present in the provided documents",
     "documents do not contain the answer",
+    "the documents do not contain the answer",
     "information is not available in the provided documents",
     "not enough information",
+    "the provided documents do not contain",
+    "not available in the provided documents",
+    "cannot be answered from the provided documents",
+    "cannot answer from the provided documents",
+    "the documents do not provide",
+]
+
+
+# ============================================================
+# AMBIGUITY PHRASES
+# ============================================================
+
+AMBIGUITY_PHRASES = [
+    "ambiguous",
+    "too ambiguous",
+    "not enough information",
+    "depends on",
+    "depends upon",
+    "cannot determine",
+    "cannot be determined",
+    "no single answer",
+    "no universal answer",
+    "not enough context",
+    "need more information",
+    "without knowing",
+    "depends on the task",
+    "depends on the dataset",
+    "depends on the model",
 ]
 
 
@@ -64,8 +105,7 @@ NO_ANSWER_PHRASES = [
 
 def remove_citations(text):
     """
-    Remove citation lines from generated answers before
-    calculating answer correctness and faithfulness.
+    Remove citation lines before lexical evaluation.
     """
 
     if not text:
@@ -73,14 +113,12 @@ def remove_citations(text):
 
     text = str(text)
 
-    # Remove Source: lines
     text = re.sub(
         r"(?im)^\s*source\s*:\s*.*$",
         "",
         text,
     )
 
-    # Remove Page: lines
     text = re.sub(
         r"(?im)^\s*page\s*:\s*.*$",
         "",
@@ -92,7 +130,7 @@ def remove_citations(text):
 
 def normalize_text(text):
     """
-    Normalize text for metric calculations.
+    Normalize text for evaluation.
     """
 
     if not text:
@@ -102,21 +140,18 @@ def normalize_text(text):
 
     text = str(text).lower()
 
-    # Remove URLs
     text = re.sub(
         r"https?://\S+",
         " ",
         text,
     )
 
-    # Keep words and numbers
     text = re.sub(
         r"[^a-z0-9\s]",
         " ",
         text,
     )
 
-    # Normalize whitespace
     text = re.sub(
         r"\s+",
         " ",
@@ -139,27 +174,14 @@ def get_words(text):
     return set(normalized.split())
 
 
-def get_tokens(text):
-    """
-    Return normalized tokens while preserving duplicates.
-    """
-
-    normalized = normalize_text(text)
-
-    if not normalized:
-        return []
-
-    return normalized.split()
-
-
 # ============================================================
 # NO-ANSWER DETECTION
 # ============================================================
 
 def is_no_answer_response(answer):
     """
-    Detect whether the generated answer indicates that
-    the information was not found in the documents.
+    Detect whether the generated answer correctly indicates
+    that the information is unavailable.
     """
 
     if not answer:
@@ -176,20 +198,38 @@ def is_no_answer_response(answer):
 
 
 # ============================================================
-# 1. ANSWER CORRECTNESS
+# AMBIGUOUS RESPONSE DETECTION
 # ============================================================
 
-def evaluate_answer_correctness(
+def is_ambiguous_response(answer):
+    """
+    Detect whether the generated response appropriately
+    recognizes an ambiguous question.
+    """
+
+    if not answer:
+        return False
+
+    normalized = normalize_text(answer)
+
+    for phrase in AMBIGUITY_PHRASES:
+
+        if phrase in normalized:
+            return True
+
+    return False
+
+
+# ============================================================
+# ANSWER CORRECTNESS
+# ============================================================
+
+def lexical_answer_score(
     generated_answer,
     expected_answer,
-    question_type="lookup",
 ):
     """
-    Evaluate answer correctness using token precision,
-    recall and F1.
-
-    This is still an automated lexical metric; it is much
-    less brittle than the original expected-word-only ratio.
+    Calculate token-level F1 for normal answerable questions.
     """
 
     generated_words = get_words(
@@ -200,40 +240,8 @@ def evaluate_answer_correctness(
         expected_answer
     )
 
-    # --------------------------------------------------------
-    # Empty checks
-    # --------------------------------------------------------
-
     if not expected_words:
         return 0.0
-
-    # --------------------------------------------------------
-    # No-answer questions
-    # --------------------------------------------------------
-
-    if question_type == "no_answer":
-
-        generated_no_answer = (
-            is_no_answer_response(
-                generated_answer
-            )
-        )
-
-        expected_no_answer = (
-            is_no_answer_response(
-                expected_answer
-            )
-        )
-
-        if generated_no_answer and expected_no_answer:
-            return 1.0
-
-        if generated_no_answer != expected_no_answer:
-            return 0.0
-
-    # --------------------------------------------------------
-    # Normal answer
-    # --------------------------------------------------------
 
     if not generated_words:
         return 0.0
@@ -246,45 +254,106 @@ def evaluate_answer_correctness(
     precision = (
         len(matched)
         / len(generated_words)
-        if generated_words
-        else 0.0
     )
 
     recall = (
         len(matched)
         / len(expected_words)
-        if expected_words
-        else 0.0
     )
 
     if precision + recall == 0:
         return 0.0
 
-    f1 = (
+    return (
         2
         * precision
         * recall
         / (precision + recall)
     )
 
-    return f1
+
+def evaluate_answer_correctness(
+    generated_answer,
+    expected_answer,
+    question_type,
+):
+    """
+    Evaluate answer correctness according to question type.
+
+    lookup:
+        lexical F1
+
+    multi_hop:
+        lexical F1
+
+    no_answer:
+        correct abstention = 1.0
+
+    ambiguous:
+        appropriate ambiguity handling = 1.0
+    """
+
+    # --------------------------------------------------------
+    # NO-ANSWER
+    # --------------------------------------------------------
+
+    if question_type == "no_answer":
+
+        if is_no_answer_response(
+            generated_answer
+        ):
+            return 1.0
+
+        return 0.0
+
+    # --------------------------------------------------------
+    # AMBIGUOUS
+    # --------------------------------------------------------
+
+    if question_type == "ambiguous":
+
+        if is_ambiguous_response(
+            generated_answer
+        ):
+            return 1.0
+
+        return 0.0
+
+    # --------------------------------------------------------
+    # LOOKUP / MULTI-HOP
+    # --------------------------------------------------------
+
+    return lexical_answer_score(
+        generated_answer,
+        expected_answer,
+    )
 
 
 # ============================================================
-# 2. FAITHFULNESS
+# FAITHFULNESS
 # ============================================================
 
 def evaluate_faithfulness(
     generated_answer,
     context,
+    question_type,
 ):
     """
-    Estimate how much of the generated answer is supported
-    lexically by the retrieved context.
+    Estimate lexical support of generated content.
 
-    This is an automated approximation, not a full semantic
-    faithfulness judge.
+    For no-answer responses there is no factual answer to
+    support, so they are not unfairly penalized.
+
+    For ambiguous responses, the ambiguity handling itself
+    does not require retrieved factual support.
     """
+
+    if question_type in {
+        "no_answer",
+        "ambiguous",
+    }:
+
+        return 1.0
 
     answer_words = get_words(
         generated_answer
@@ -312,7 +381,7 @@ def evaluate_faithfulness(
 
 
 # ============================================================
-# 3. RETRIEVAL RELEVANCE
+# RETRIEVAL RELEVANCE
 # ============================================================
 
 def evaluate_retrieval_relevance(
@@ -320,18 +389,16 @@ def evaluate_retrieval_relevance(
     relevant_chunk_ids,
 ):
     """
-    Recall-style retrieval relevance.
+    Calculate retrieval recall when ground-truth chunk IDs
+    are actually available.
 
-    IMPORTANT:
-    If relevant_chunk_ids is empty, return None instead of
-    0.0 because an empty list may mean that ground truth has
-    not yet been populated.
+    Empty relevant_chunk_ids means:
+    ground truth has not been populated.
+
+    Therefore it returns None rather than 0.
     """
 
-    if relevant_chunk_ids is None:
-        return None
-
-    if len(relevant_chunk_ids) == 0:
+    if not relevant_chunk_ids:
         return None
 
     retrieved = set(
@@ -366,29 +433,14 @@ def evaluate_retrieval_relevance(
 
 def extract_citations(answer):
     """
-    Extract citations in the expected format:
+    Extract:
 
     Source: filename
     Page: page_number
-
-    Returns:
-
-    [
-        {
-            "source": "...",
-            "page": "..."
-        }
-    ]
     """
 
     if not answer:
         return []
-
-    citations = []
-
-    # --------------------------------------------------------
-    # Standard citation format
-    # --------------------------------------------------------
 
     pattern = re.compile(
         r"source\s*:\s*(.+?)"
@@ -400,6 +452,8 @@ def extract_citations(answer):
     matches = pattern.findall(
         str(answer)
     )
+
+    citations = []
 
     for source, page in matches:
 
@@ -415,10 +469,6 @@ def extract_citations(answer):
                 }
             )
 
-    # --------------------------------------------------------
-    # Remove duplicates
-    # --------------------------------------------------------
-
     unique = []
 
     seen = set()
@@ -433,7 +483,10 @@ def extract_citations(answer):
         if key not in seen:
 
             seen.add(key)
-            unique.append(citation)
+
+            unique.append(
+                citation
+            )
 
     return unique
 
@@ -444,41 +497,42 @@ def extract_citations(answer):
 
 def normalize_source(source):
     """
-    Normalize source filenames for comparison.
+    Normalize source filename.
     """
 
     if not source:
         return ""
 
-    source = str(source).strip().lower()
+    source = str(
+        source
+    ).strip().lower()
 
-    # Normalize slashes
-    source = source.replace("\\", "/")
+    source = source.replace(
+        "\\",
+        "/",
+    )
 
-    # Keep only filename if a path is provided
-    source = source.split("/")[-1]
-
-    return source
+    return source.split("/")[-1]
 
 
 def normalize_page(page):
     """
-    Normalize page values.
+    Normalize page number.
     """
 
     if page is None:
         return ""
 
-    page = str(page).strip().lower()
+    page = str(
+        page
+    ).strip().lower()
 
-    # Remove common labels
     page = re.sub(
         r"^page\s*[:\-]?\s*",
         "",
         page,
     )
 
-    # Extract first integer where possible
     match = re.search(
         r"\d+",
         page,
@@ -491,20 +545,27 @@ def normalize_page(page):
 
 
 # ============================================================
-# 4. CITATION ACCURACY
+# CITATION ACCURACY
 # ============================================================
 
 def evaluate_citation_accuracy(
     generated_answer,
     retrieved_results,
+    question_type,
 ):
     """
-    Check generated Source + Page citations against
-    retrieved result metadata.
+    Evaluate citation correctness.
 
-    Returns None when there are no retrieved references
-    because citation accuracy cannot be evaluated.
+    No-answer and ambiguous questions are not required to
+    provide factual source/page citations.
     """
+
+    if question_type in {
+        "no_answer",
+        "ambiguous",
+    }:
+
+        return 1.0
 
     citations = extract_citations(
         generated_answer
@@ -516,15 +577,14 @@ def evaluate_citation_accuracy(
     if not retrieved_results:
         return 0.0
 
-    # --------------------------------------------------------
-    # Collect valid source/page pairs
-    # --------------------------------------------------------
-
     valid_references = []
 
     for result in retrieved_results:
 
-        if not isinstance(result, dict):
+        if not isinstance(
+            result,
+            dict,
+        ):
             continue
 
         metadata = result.get(
@@ -532,7 +592,10 @@ def evaluate_citation_accuracy(
             {},
         )
 
-        if not isinstance(metadata, dict):
+        if not isinstance(
+            metadata,
+            dict,
+        ):
             metadata = {}
 
         source = metadata.get(
@@ -561,10 +624,6 @@ def evaluate_citation_accuracy(
     if not valid_references:
         return 0.0
 
-    # --------------------------------------------------------
-    # Check every citation
-    # --------------------------------------------------------
-
     correct = 0
 
     for citation in citations:
@@ -576,8 +635,6 @@ def evaluate_citation_accuracy(
         cited_page = normalize_page(
             citation["page"]
         )
-
-        citation_correct = False
 
         for reference in valid_references:
 
@@ -593,13 +650,14 @@ def evaluate_citation_accuracy(
                 == reference["page"]
             )
 
-            if source_matches and page_matches:
+            if (
+                source_matches
+                and page_matches
+            ):
 
-                citation_correct = True
+                correct += 1
+
                 break
-
-        if citation_correct:
-            correct += 1
 
     return min(
         correct / len(citations),
@@ -608,7 +666,7 @@ def evaluate_citation_accuracy(
 
 
 # ============================================================
-# OVERALL SCORE
+# OVERALL METRIC
 # ============================================================
 
 def calculate_overall_score(
@@ -618,14 +676,10 @@ def calculate_overall_score(
     citation_accuracy,
 ):
     """
-    Calculate the overall score.
+    Calculate overall metric score.
 
-    Retrieval relevance is ignored when it is None because
-    the golden dataset does not contain ground truth for that
-    question.
-
-    Citation accuracy is included because the RAG pipeline
-    is expected to generate citations.
+    Retrieval relevance is included only when ground-truth
+    chunk IDs are available.
     """
 
     scores = [
@@ -635,14 +689,17 @@ def calculate_overall_score(
     ]
 
     if retrieval_relevance is not None:
+
         scores.append(
             retrieval_relevance
         )
 
-    if not scores:
-        return 0.0
-
-    return sum(scores) / len(scores)
+    return (
+        sum(scores)
+        / len(scores)
+        if scores
+        else 0.0
+    )
 
 
 # ============================================================
@@ -700,12 +757,12 @@ def save_results(
 
 
 # ============================================================
-# SAFE AVERAGE
+# AVERAGE
 # ============================================================
 
 def average(values):
     """
-    Average only valid numeric values.
+    Average only numeric values.
     """
 
     valid_values = [
@@ -751,7 +808,7 @@ def run_evaluation():
     )
 
     # --------------------------------------------------------
-    # Dataset statistics
+    # Question statistics
     # --------------------------------------------------------
 
     type_counts = Counter(
@@ -771,22 +828,21 @@ def run_evaluation():
     ):
 
         print(
-            f"  {question_type}: "
-            f"{count}"
+            f"  {question_type}: {count}"
         )
 
     # --------------------------------------------------------
-    # Ground-truth statistics
+    # Retrieval ground truth
     # --------------------------------------------------------
 
     questions_with_retrieval_gt = 0
-
     questions_without_retrieval_gt = 0
 
     for item in GOLDEN_DATASET:
 
         relevant_ids = item.get(
-            "relevant_chunk_ids"
+            "relevant_chunk_ids",
+            [],
         )
 
         if relevant_ids:
@@ -812,13 +868,8 @@ def run_evaluation():
     )
 
     print(
-        "\nNOTE:"
-    )
-
-    print(
-        "Questions without relevant_chunk_ids "
-        "are excluded from retrieval relevance "
-        "averaging."
+        "\nMissing retrieval ground truth "
+        "is treated as N/A, not failure."
     )
 
     # --------------------------------------------------------
@@ -829,7 +880,9 @@ def run_evaluation():
         "\nCreating BM25 index..."
     )
 
-    bm25, chunks = create_bm25_index()
+    bm25, chunks = (
+        create_bm25_index()
+    )
 
     print(
         "\nBM25 index ready."
@@ -957,13 +1010,11 @@ def run_evaluation():
             )
 
             retrieved_chunk_ids = []
-
             retrieved_results = []
-
             context = ""
 
         # ----------------------------------------------------
-        # Generated answer
+        # Print generated answer
         # ----------------------------------------------------
 
         print(
@@ -1002,6 +1053,7 @@ def run_evaluation():
             evaluate_faithfulness(
                 generated_answer,
                 context,
+                question_type,
             )
         )
 
@@ -1024,6 +1076,7 @@ def run_evaluation():
             evaluate_citation_accuracy(
                 generated_answer,
                 retrieved_results,
+                question_type,
             )
         )
 
@@ -1041,7 +1094,7 @@ def run_evaluation():
         )
 
         # ----------------------------------------------------
-        # Store metric scores
+        # Store scores
         # ----------------------------------------------------
 
         correctness_scores.append(
@@ -1068,7 +1121,10 @@ def run_evaluation():
         # Correct / incorrect
         # ----------------------------------------------------
 
-        if answer_correctness >= CORRECTNESS_THRESHOLD:
+        if (
+            answer_correctness
+            >= CORRECTNESS_THRESHOLD
+        ):
 
             evaluation = "correct"
 
@@ -1081,7 +1137,7 @@ def run_evaluation():
             incorrect += 1
 
         # ----------------------------------------------------
-        # Citation information
+        # Citations
         # ----------------------------------------------------
 
         citations = extract_citations(
@@ -1117,9 +1173,7 @@ def run_evaluation():
         if retrieval_relevance is None:
 
             print(
-                "Retrieval Relevance  : "
-                "N/A "
-                "(no ground-truth chunk IDs)"
+                "Retrieval Relevance  : N/A"
             )
 
         else:
@@ -1223,9 +1277,9 @@ def run_evaluation():
         overall_scores
     )
 
-    # --------------------------------------------------------
-    # Answer accuracy
-    # --------------------------------------------------------
+    # ========================================================
+    # ACCURACY
+    # ========================================================
 
     overall_accuracy = (
         correct
@@ -1234,6 +1288,37 @@ def run_evaluation():
         if total_questions
         else 0.0
     )
+
+    # --------------------------------------------------------
+    # Per-type accuracy
+    # --------------------------------------------------------
+
+    type_accuracy = {}
+
+    for question_type in type_counts:
+
+        type_results = [
+            result
+            for result in results
+            if result["type"] == question_type
+        ]
+
+        if not type_results:
+
+            continue
+
+        type_correct = sum(
+            1
+            for result in type_results
+            if result["evaluation"]
+            == "correct"
+        )
+
+        type_accuracy[question_type] = round(
+            type_correct
+            / len(type_results),
+            4,
+        )
 
     # ========================================================
     # SUMMARY
@@ -1253,6 +1338,13 @@ def run_evaluation():
             overall_accuracy / 100,
             4,
         ),
+
+        "answer_accuracy_percent": round(
+            overall_accuracy,
+            2,
+        ),
+
+        "accuracy_by_type": type_accuracy,
 
         "average_answer_correctness": round(
             avg_correctness,
@@ -1329,6 +1421,32 @@ def run_evaluation():
     )
 
     print(
+        f"\nOverall Accuracy     : "
+        f"{overall_accuracy:.2f}%"
+    )
+
+    print(
+        "\n----------------------------------------"
+    )
+
+    print(
+        "ACCURACY BY QUESTION TYPE"
+    )
+
+    print(
+        "----------------------------------------"
+    )
+
+    for question_type, accuracy in (
+        type_accuracy.items()
+    ):
+
+        print(
+            f"{question_type:20s}: "
+            f"{accuracy * 100:.2f}%"
+        )
+
+    print(
         "\n----------------------------------------"
     )
 
@@ -1360,8 +1478,7 @@ def run_evaluation():
     else:
 
         print(
-            "Retrieval Relevance  : "
-            "N/A"
+            "Retrieval Relevance  : N/A"
         )
 
     print(
@@ -1372,11 +1489,6 @@ def run_evaluation():
     print(
         f"Overall Metric Score : "
         f"{avg_overall * 100:.2f}%"
-    )
-
-    print(
-        f"\nOverall Accuracy     : "
-        f"{overall_accuracy:.2f}%"
     )
 
     print(

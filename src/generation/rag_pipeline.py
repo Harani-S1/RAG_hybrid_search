@@ -1,6 +1,15 @@
+
 # ============================================================
 # RAG PIPELINE
 # Dense Retrieval + BM25 + RRF + CrossEncoder + Groq
+#
+# Improved retrieval:
+# - Larger dense/BM25 candidate pools
+# - RRF hybrid retrieval
+# - Cross-encoder reranking
+# - Low-relevance filtering
+# - Stricter answer generation
+# - Avoids sending obviously irrelevant chunks to Groq
 # ============================================================
 
 from sentence_transformers import CrossEncoder
@@ -21,10 +30,17 @@ from src.generation.groq_llm import (
 # CONFIGURATION
 # ============================================================
 
-DENSE_TOP_K = 10
-BM25_TOP_K = 10
-HYBRID_TOP_K = 10
+DENSE_TOP_K = 20
+BM25_TOP_K = 20
+HYBRID_TOP_K = 20
+
+# Number of chunks finally given to the LLM.
 RERANK_TOP_K = 5
+
+# Minimum CrossEncoder relevance score.
+# Chunks below this are considered weak matches.
+MIN_RERANK_SCORE = -1.5
+
 RRF_K = 60
 
 RERANKER_MODEL = (
@@ -45,7 +61,9 @@ def get_reranker():
 
     if _reranker is None:
 
-        print("\nLoading reranker model...")
+        print(
+            "\nLoading reranker model..."
+        )
 
         _reranker = CrossEncoder(
             RERANKER_MODEL
@@ -371,7 +389,7 @@ def create_hybrid_results(
 
 
 # ============================================================
-# RERANK
+# CROSS-ENCODER RERANKING
 # ============================================================
 
 def rerank_results(
@@ -412,7 +430,10 @@ def rerank_results(
     if not pairs:
         return []
 
-    scores = model.predict(pairs)
+    scores = model.predict(
+        pairs,
+        show_progress_bar=False,
+    )
 
     reranked = []
 
@@ -429,6 +450,7 @@ def rerank_results(
 
         reranked.append(item)
 
+    # Highest relevance first.
     reranked.sort(
         key=lambda item: item[
             "reranker_score"
@@ -436,7 +458,54 @@ def rerank_results(
         reverse=True,
     )
 
-    return reranked[:top_k]
+    print(
+        "\nCross-encoder scores:"
+    )
+
+    for index, item in enumerate(
+        reranked,
+        start=1,
+    ):
+
+        print(
+            f"  {index}. "
+            f"{item['reranker_score']:.4f}"
+        )
+
+    # --------------------------------------------------------
+    # Remove weak matches.
+    # --------------------------------------------------------
+
+    filtered = [
+        item
+        for item in reranked
+        if item[
+            "reranker_score"
+        ] >= MIN_RERANK_SCORE
+    ]
+
+    print(
+        f"\nChunks above relevance threshold: "
+        f"{len(filtered)}"
+    )
+
+    # --------------------------------------------------------
+    # Safety fallback.
+    #
+    # If every result is below the threshold, keep the
+    # strongest result rather than sending no context.
+    # --------------------------------------------------------
+
+    if not filtered:
+
+        filtered = reranked[:1]
+
+        print(
+            "No chunk passed threshold. "
+            "Keeping the best available chunk."
+        )
+
+    return filtered[:top_k]
 
 
 # ============================================================
@@ -501,7 +570,7 @@ def build_context(results):
         if reranker_score is not None:
 
             score_info = (
-                f"\nReranker score: "
+                f"\nRelevance score: "
                 f"{reranker_score:.4f}"
             )
 
@@ -538,41 +607,45 @@ def create_rag_prompt(
 ):
 
     return f"""
-You are a document question-answering assistant.
+You are a precise document question-answering assistant.
 
-Answer the user's question using ONLY the
-provided document context.
+Your task is to answer the USER QUESTION using ONLY the
+DOCUMENT CONTEXT provided below.
 
-IMPORTANT RULES:
+STRICT RULES:
 
-1. Use only information contained in the
-   supplied document context.
+1. Answer only from the document context.
 
-2. Do not use outside knowledge.
+2. Do NOT use outside knowledge.
 
-3. Do not invent facts.
+3. Do NOT guess.
 
-4. Do not make assumptions that are not
-   supported by the documents.
+4. Do NOT invent facts.
 
-5. Prefer the context that directly answers
+5. Prefer the context section that directly answers
    the question.
 
-6. Give a clear and concise answer.
+6. Do NOT combine unrelated context sections.
 
-7. If several context sections support the
-   answer, combine them carefully.
+7. Only combine multiple context sections when they clearly
+   refer to the same topic and are both necessary to answer
+   the question.
 
-8. At the end of your answer, provide the
-   source and page used in this format:
+8. If the context does not contain enough information to
+   answer the question, do not guess.
+
+9. Keep the answer concise and directly answer the question.
+
+10. If the answer is not present in the provided context,
+    respond EXACTLY:
+
+I could not find the answer in the provided documents.
+
+11. For a successful answer, provide the source and page
+    used in this format:
 
 Source: <source>
 Page: <page>
-
-9. If the answer is not present in the
-   provided context, say exactly:
-
-"I could not find the answer in the provided documents."
 
 DOCUMENT CONTEXT:
 
@@ -746,7 +819,9 @@ def rag_answer(
 
     for result in reranked_results:
 
-        chunk_id = result.get("id")
+        chunk_id = result.get(
+            "id"
+        )
 
         if chunk_id:
 

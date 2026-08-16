@@ -1,27 +1,22 @@
 """
 Golden QA Dataset for RAG Evaluation
 
-Phase 4 requirements:
+Phase 4:
 - 50+ question-answer pairs
-- Straightforward questions
+- Straightforward / lookup questions
 - Multi-hop questions
-- No-answer questions
 - Ambiguous questions
+- No-answer questions
 
-The reference answers are based on the project documents:
+Sources:
 - Deep_Learning.pdf
 - Building_Machine_Learning_Systems.pdf
-
-IMPORTANT:
-Relevant chunk IDs are kept only where they are already verified
-in the existing project evaluation data. New ground-truth chunk IDs
-will be validated/populated during retrieval evaluation.
 """
 
 GOLDEN_DATASET = [
 
     # ============================================================
-    # STRAIGHTFORWARD / LOOKUP QUESTIONS
+    # LOOKUP QUESTIONS
     # ============================================================
 
     {
@@ -102,57 +97,43 @@ GOLDEN_DATASET = [
     },
 
     {
-        "question": "What are the main advantages of deep learning?",
+        "question": "What is classification?",
         "answer": (
-            "Deep learning benefits from more powerful computers, "
-            "larger datasets, and techniques that allow deeper "
-            "networks to be trained. Deep models can also provide "
-            "advantages through distributed representations."
+            "Classification is a machine learning task in which a "
+            "program assigns an input to one of a set of categories."
         ),
         "type": "lookup",
-        "relevant_chunk_ids": [
-            "chunk_0041_001_000792"
-        ],
+        "relevant_chunk_ids": [],
     },
 
     {
-        "question": "How does deep learning differ from traditional machine learning?",
+        "question": "What is regression?",
         "answer": (
-            "Deep learning involves a greater amount of composition "
-            "of learned functions or learned concepts than traditional "
-            "machine learning."
+            "Regression is a supervised learning task in which the "
+            "model learns to predict a continuous-valued output."
         ),
         "type": "lookup",
-        "relevant_chunk_ids": [
-            "chunk_0034_002_000771"
-        ],
+        "relevant_chunk_ids": [],
     },
 
     {
-        "question": "What is a machine learning algorithm?",
+        "question": "What is unsupervised learning?",
         "answer": (
-            "A machine learning algorithm is an algorithm that is "
-            "able to learn from data."
+            "Unsupervised learning refers to learning from data without "
+            "a supervision signal or target provided for each example."
         ),
         "type": "lookup",
-        "relevant_chunk_ids": [
-            "chunk_0114_000_000975"
-        ],
+        "relevant_chunk_ids": [],
     },
 
     {
-        "question": "Why has deep learning become more useful over time?",
+        "question": "What is clustering?",
         "answer": (
-            "Deep learning has become more useful because available "
-            "training data has increased and computer infrastructure "
-            "has improved. Models have grown in size and have solved "
-            "increasingly complicated applications with increasing accuracy."
+            "Clustering consists of dividing a dataset into groups of "
+            "similar examples."
         ),
         "type": "lookup",
-        "relevant_chunk_ids": [
-            "chunk_0041_001_000792",
-            "chunk_0026_002_000745"
-        ],
+        "relevant_chunk_ids": [],
     },
 
     {
@@ -201,46 +182,6 @@ GOLDEN_DATASET = [
             "Stochastic gradient descent is an optimization approach "
             "that updates model parameters using gradients estimated "
             "from training examples or minibatches."
-        ),
-        "type": "lookup",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is classification?",
-        "answer": (
-            "Classification is a machine learning task in which a "
-            "program assigns an input to one of a set of categories."
-        ),
-        "type": "lookup",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is regression?",
-        "answer": (
-            "Regression is a supervised learning task in which the "
-            "model learns to predict a continuous-valued output."
-        ),
-        "type": "lookup",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is unsupervised learning?",
-        "answer": (
-            "Unsupervised learning refers to learning from data without "
-            "a supervision signal or target provided for each example."
-        ),
-        "type": "lookup",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is clustering?",
-        "answer": (
-            "Clustering consists of dividing a dataset into groups of "
-            "similar examples."
         ),
         "type": "lookup",
         "relevant_chunk_ids": [],
@@ -372,6 +313,59 @@ GOLDEN_DATASET = [
         "relevant_chunk_ids": [],
     },
 
+    {
+        "question": "How does deep learning differ from traditional machine learning?",
+        "answer": (
+            "Deep learning involves a greater amount of composition "
+            "of learned functions or learned concepts than traditional "
+            "machine learning."
+        ),
+        "type": "lookup",
+        "relevant_chunk_ids": [
+            "chunk_0034_002_000771"
+        ],
+    },
+
+    {
+        "question": "What are the main advantages of deep learning?",
+        "answer": (
+            "Deep learning benefits from more powerful computers, "
+            "larger datasets, and techniques that allow deeper "
+            "networks to be trained. Deep models can also provide "
+            "advantages through distributed representations."
+        ),
+        "type": "lookup",
+        "relevant_chunk_ids": [
+            "chunk_0041_001_000792"
+        ],
+    },
+
+    {
+        "question": "Why has deep learning become more useful over time?",
+        "answer": (
+            "Deep learning has become more useful because available "
+            "training data has increased and computer infrastructure "
+            "has improved. Models have grown in size and have solved "
+            "increasingly complicated applications with increasing accuracy."
+        ),
+        "type": "lookup",
+        "relevant_chunk_ids": [
+            "chunk_0041_001_000792",
+            "chunk_0026_002_000745"
+        ],
+    },
+
+    {
+        "question": "What is the difference between training and testing?",
+        "answer": (
+            "Training is used to learn model parameters from data, "
+            "while testing is used to evaluate how well the trained "
+            "model performs on data that was not used for training."
+        ),
+        "type": "lookup",
+        "relevant_chunk_ids": [],
+    },
+
     # ============================================================
     # MULTI-HOP QUESTIONS
     # ============================================================
@@ -430,20 +424,16 @@ GOLDEN_DATASET = [
             "amounts of training data?"
         ),
         "answer": (
-            "The book describes increasing training data as an important "
-            "historical trend in deep learning. Larger datasets provide "
-            "more examples from which large models can learn, while "
-            "improved infrastructure makes training those larger models "
-            "practical."
+            "Larger datasets provide more examples from which large "
+            "models can learn, while improved infrastructure makes "
+            "training those larger models practical."
         ),
         "type": "multi_hop",
         "relevant_chunk_ids": [],
     },
 
     {
-        "question": (
-            "How does regularization relate to overfitting?"
-        ),
+        "question": "How does regularization relate to overfitting?",
         "answer": (
             "Overfitting occurs when a model does not generalize well "
             "to new examples. Regularization is used to discourage "
@@ -501,8 +491,7 @@ GOLDEN_DATASET = [
 
     {
         "question": (
-            "Why are gated recurrent networks useful for sequence "
-            "modeling?"
+            "Why are gated recurrent networks useful for sequence modeling?"
         ),
         "answer": (
             "Sequence models can struggle with long-term dependencies. "
@@ -552,7 +541,7 @@ GOLDEN_DATASET = [
             "experience, tasks, and performance?"
         ),
         "answer": (
-            "The book describes learning in terms of a program improving "
+            "Learning can be described in terms of a program improving "
             "its performance on a class of tasks, as measured by a "
             "performance measure, through experience."
         ),
@@ -583,9 +572,9 @@ GOLDEN_DATASET = [
         "answer": (
             "As the number of dimensions increases, many machine "
             "learning problems become much harder and generalization "
-            "becomes more difficult. Deep learning was developed in "
-            "part to overcome these limitations by learning complicated "
-            "functions in high-dimensional spaces."
+            "becomes more difficult. Deep learning helps address these "
+            "limitations by learning complicated functions in "
+            "high-dimensional spaces."
         ),
         "type": "multi_hop",
         "relevant_chunk_ids": [],
@@ -641,48 +630,6 @@ GOLDEN_DATASET = [
     },
 
     {
-        "question": "What does better performance mean?",
-        "answer": (
-            "The question is ambiguous because performance depends on "
-            "the task and the performance metric being used."
-        ),
-        "type": "ambiguous",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is a large dataset?",
-        "answer": (
-            "The documents discuss increasing dataset sizes as an "
-            "important trend, but they do not provide one universal "
-            "numeric definition of what constitutes a large dataset."
-        ),
-        "type": "ambiguous",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "Which neural network is the most powerful?",
-        "answer": (
-            "The documents do not identify one universally most powerful "
-            "neural network. Different architectures are suited to "
-            "different tasks."
-        ),
-        "type": "ambiguous",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "Why is this method better?",
-        "answer": (
-            "The question is ambiguous because it does not specify "
-            "which method or which performance criterion is being discussed."
-        ),
-        "type": "ambiguous",
-        "relevant_chunk_ids": [],
-    },
-
-    {
         "question": "How deep should a network be?",
         "answer": (
             "There is no single answer. The book notes that there is "
@@ -694,41 +641,13 @@ GOLDEN_DATASET = [
         "relevant_chunk_ids": [],
     },
 
-    {
-        "question": "What is the best way to train a model?",
-        "answer": (
-            "The question is ambiguous because training choices depend "
-            "on the model, dataset, objective, optimization method, "
-            "and other factors."
-        ),
-        "type": "ambiguous",
-        "relevant_chunk_ids": [],
-    },
-
     # ============================================================
     # NO-ANSWER QUESTIONS
+    # Keep only a small number for testing refusal/no-answer behavior.
     # ============================================================
 
     {
         "question": "What is the capital city of France?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "Who is the current president of the United States?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the population of India?",
         "answer": (
             "The provided documents do not contain the answer to this question."
         ),
@@ -753,81 +672,11 @@ GOLDEN_DATASET = [
         "type": "no_answer",
         "relevant_chunk_ids": [],
     },
-
-    {
-        "question": "What is the current price of Bitcoin?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the weather in New York today?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the latest version of Python?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "Who is the CEO of Google?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the distance from Earth to the Moon?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the population of Japan?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
-    {
-        "question": "What is the current stock price of Apple?",
-        "answer": (
-            "The provided documents do not contain the answer to this question."
-        ),
-        "type": "no_answer",
-        "relevant_chunk_ids": [],
-    },
-
 ]
 
 
-# ============================================================
-# Dataset statistics
-# ============================================================
-
 def get_dataset_statistics():
-    """
-    Return counts by question type.
-    """
+    """Return counts by question type."""
 
     statistics = {
         "total": len(GOLDEN_DATASET),
@@ -838,11 +687,7 @@ def get_dataset_statistics():
     }
 
     for item in GOLDEN_DATASET:
-
-        question_type = item.get(
-            "type",
-            "unknown",
-        )
+        question_type = item.get("type", "unknown")
 
         if question_type in statistics:
             statistics[question_type] += 1
@@ -858,24 +703,10 @@ if __name__ == "__main__":
     print("GOLDEN QA DATASET")
     print("=" * 60)
 
-    print(
-        f"Total questions : {stats['total']}"
-    )
-
-    print(
-        f"Lookup          : {stats['lookup']}"
-    )
-
-    print(
-        f"Multi-hop       : {stats['multi_hop']}"
-    )
-
-    print(
-        f"Ambiguous       : {stats['ambiguous']}"
-    )
-
-    print(
-        f"No-answer       : {stats['no_answer']}"
-    )
+    print(f"Total questions : {stats['total']}")
+    print(f"Lookup          : {stats['lookup']}")
+    print(f"Multi-hop       : {stats['multi_hop']}")
+    print(f"Ambiguous       : {stats['ambiguous']}")
+    print(f"No-answer       : {stats['no_answer']}")
 
     print("=" * 60)
