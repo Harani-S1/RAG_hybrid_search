@@ -4,11 +4,13 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip
+RUN pip install --no-cache-dir --no-compile -r requirements.txt
 
 COPY app ./app
 COPY src ./src
-COPY data ./data
+COPY data/raw ./data/raw
+COPY streamlit_app.py .
 
 EXPOSE 8000
 

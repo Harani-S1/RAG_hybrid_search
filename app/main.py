@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException
+from pathlib import Path
+import pymupdf
 
 from app.schemas import QuestionRequest, QuestionResponse
 
@@ -84,7 +86,45 @@ def health():
         "rag_ready": True,
         "chunks": len(chunks),
     }
+# ============================================================
+# DOCUMENTS
+# ============================================================
 
+@app.get("/v1/documents")
+def get_documents():
+
+    data_dir = Path("data/raw")
+
+    if not data_dir.exists():
+        return {
+            "documents": [],
+            "count": 0,
+        }
+
+    documents = []
+
+    for pdf_path in sorted(data_dir.glob("*.pdf")):
+
+        try:
+            with pymupdf.open(pdf_path) as pdf:
+                page_count = len(pdf)
+
+            documents.append({
+                "name": pdf_path.name,
+                "path": str(pdf_path).replace("\\", "/"),
+                "pages": page_count,
+            })
+
+        except Exception as error:
+
+            print(
+                f"Failed to read {pdf_path}: {error}"
+            )
+
+    return {
+        "documents": documents,
+        "count": len(documents),
+    }
 
 # ============================================================
 # ASK

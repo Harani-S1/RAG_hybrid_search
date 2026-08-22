@@ -41,7 +41,7 @@ st.markdown(
 # CONFIG
 # ============================================================
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "http://api:8000"
 
 
 # ============================================================
@@ -180,9 +180,9 @@ with st.sidebar:
     st.markdown("**FastAPI:**")
 
     st.code(
-        "http://127.0.0.1:8000",
-        language="text",
-    )
+    "http://api:8000",
+    language="text",
+)
 
     st.markdown("**Ask endpoint:**")
 
